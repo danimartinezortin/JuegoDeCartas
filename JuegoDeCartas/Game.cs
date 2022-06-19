@@ -6,8 +6,15 @@ using System.Threading.Tasks;
 
 namespace JuegoDeCartas
 {
-    internal class Game
+    internal class Game<T>
     {
         public List<Player> PlayerList { get; set; }
+        public T Deck { get; set; }
+
+        public Game(List<Player> playerList, T deck)
+        {
+            PlayerList = playerList;
+            Deck = deck;
+        }
     }
 }

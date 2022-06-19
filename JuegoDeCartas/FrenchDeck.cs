@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using JuegoDeCartas;
 namespace JuegoDeCartas
 {
-    internal class FrenchDeck : IFrenchDeck
+    internal class FrenchDeck : Deck
     {
         public List<Card> Cards;
         public void ShuffleDeck()

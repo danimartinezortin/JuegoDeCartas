@@ -8,14 +8,6 @@ namespace JuegoDeCartas
 {
     internal interface IDeckCreator
     {
-        public List<Card> CreateDeck(string[] suit, int[] numbers)
-        {
-            List<Card> cards = new List<Card>();
-            foreach(string s in suit)
-            {
-                foreach(int n in numbers) cards.Add(new Card(s, n));
-            }
-            return cards;
-        }
+        public List<Card> CreateDeck(string[] suit, int[] numbers);
     }
 }

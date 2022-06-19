@@ -11,5 +11,9 @@ namespace JuegoDeCartas
         public string Name { get; set; }
         public List<Card> CardPack = new List<Card>();
 
+        public Player(string name)
+        {
+            Name = name;
+        }
     }
 }

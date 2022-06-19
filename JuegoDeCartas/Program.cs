@@ -1,13 +1,12 @@
 ﻿using JuegoDeCartas;
 
-SpanishDeck deck= new SpanishDeck();
-foreach(Card c in deck.Cards)
+SpanishDeck deck= new SpanishDeck(new DeckCreator());
+foreach (Card c in deck.Cards) Console.WriteLine(c);
+List<Player> players= new List<Player>();
+for(int i = 0; i < 4; i++)
 {
-    Console.WriteLine(c.ToString());
+    
+    players.Add(new Player("Player " + i));
 }
 
-deck.ShuffleDeck();
-foreach (Card c in deck.Cards)
-{
-    Console.WriteLine(c.ToString());
-}
+Game<SpanishDeck> game = new Game<SpanishDeck>(players, deck);
