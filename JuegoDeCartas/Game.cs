@@ -9,12 +9,42 @@ namespace JuegoDeCartas
     internal class Game<T>
     {
         public List<Player> PlayerList { get; set; }
-        public T Deck { get; set; }
+        public Deck CardDeck { get; set; }
 
-        public Game(List<Player> playerList, T deck)
+        public Game(List<Player> playerList, Deck deck)
         {
             PlayerList = playerList;
-            Deck = deck;
+            CardDeck = deck;
+            CardDeck.ShuffleDeck();
+            Start();
+        }
+
+        public void Start()
+        {
+
+            GiveCards();
+
+            CardDeck.CheckWinners(PlayerList);
+
+            foreach (Player p in PlayerList)
+            {
+                foreach (Card c in p.CardPack)
+                {
+                    Console.WriteLine(p.Name + " " + c.ToString());
+                }
+            }
+        }
+
+        public void GiveCards()
+        {
+            for (int i = 0; i < 4; i++)
+            {
+                foreach (Player p in PlayerList)
+                {
+                    p.CardPack.Add(CardDeck.GiveCard());
+                }
+            }
+
         }
     }
 }

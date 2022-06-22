@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace JuegoDeCartas
 {
-    internal class Card
+    internal class Card : IComparable
     {
         public int Number { get; set; }
         public string Suit { get; set; }
@@ -26,6 +26,11 @@ namespace JuegoDeCartas
         {
             return obj is Card card &&
                    Number == card.Number;
+        }
+
+        public int CompareTo(object? obj)
+        {
+            return Number.CompareTo(obj);
         }
     }
 }

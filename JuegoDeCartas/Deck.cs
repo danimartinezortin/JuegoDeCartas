@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace JuegoDeCartas
 {
-    internal class Deck
+    internal abstract class Deck
     {
+        public int CardsPerRound;
         public List<Card> Cards = new List<Card>();
         public void ShuffleDeck()
         {
@@ -19,6 +20,21 @@ namespace JuegoDeCartas
                 Cards[n] = Cards[i];
                 Cards[i] = swap;
             }
+        }
+
+        public abstract void CheckWinners(List<Player> PlayerList);
+        public Card GiveCard()
+        {
+            for(int i = 0; i < Cards.Count; i++)
+            {
+                if (Cards[i] != null)
+                {
+                    Card chosenCard = Cards[i];
+                    Cards[i] = null;
+                    return chosenCard;
+                }
+            }
+            throw new Exception("Deck is empty");
         }
     }
 }
